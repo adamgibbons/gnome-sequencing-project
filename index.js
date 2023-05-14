@@ -2,7 +2,6 @@ const counter = {
     keyups: 0
 }
 
-// event = keyup or keydown
 document.addEventListener('keyup', event => {
     if (event.code === 'Space') {
         if (counter.keyups === 0) {
