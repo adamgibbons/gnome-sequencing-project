@@ -1,3 +1,26 @@
+const counter = {
+    keyups: 0
+}
+
+// event = keyup or keydown
+document.addEventListener('keyup', event => {
+    if (event.code === 'Space') {
+        if (counter.keyups === 0) {
+            stopHat()
+        }
+        if (counter.keyups === 1) {
+            stopBeard()
+        }
+        if (counter.keyups === 2) {
+            stopBelly()
+            document.getElementById('play-again').style.setProperty('display', 'block')
+        }
+        counter.keyups++
+    }
+})
+
+
+
 let hats = document.getElementById("top");
 let beards = document.getElementById("middle");
 let bellies = document.getElementById("bottom");
@@ -7,8 +30,6 @@ const backgroundPosition2 = { x: 0 };
 const backgroundPosition3 = { x: 0 };
 
 const WIDTH = 643;
-
-let counter = 0;
 
 function calculateTarget(obj, WIDTH) {
   if (obj.x > WIDTH * (2 / 3)) {
@@ -105,27 +126,28 @@ requestAnimationFrame(animate);
 
 function stopHat(e) {
   topTween.stop();
-  document.getElementById("hat-button").disabled = true;
-  document.getElementById("hat-button").style.setProperty("display", "none");
-  document
-    .getElementById("beard-button")
-    .style.setProperty("display", "inline-block");
+//   document.getElementById("hat-button").disabled = true;
+//   document.getElementById("hat-button").style.setProperty("display", "none");
+//   document
+//     .getElementById("beard-button")
+//     .style.setProperty("display", "inline-block");
 }
 
 function stopBeard() {
   middleTween.stop();
-  document.getElementById("beard-button").style.setProperty("display", "none");
-  document
-    .getElementById("belly-button")
-    .style.setProperty("display", "inline-block");
+//   document.getElementById("beard-button").style.setProperty("display", "none");
+//   document
+//     .getElementById("belly-button")
+//     .style.setProperty("display", "inline-block");
 }
 
 function stopBelly() {
   bottomTween.stop();
-  document.getElementById("belly-button").disabled = true;
-  document.getElementById("result").textContent = "Done";
+//   document.getElementById("belly-button").disabled = true;
+//   document.getElementById("result").textContent = "Done";
 }
 
-function again() {
-  console.log("play again");
+function playAgain() {
+  location.reload()
 }
+
